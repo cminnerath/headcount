@@ -14,5 +14,7 @@ class StateWideTestingLoaderTest < Minitest::Test
     testload = StateWideTestingLoader.new
     testload.load_all
     assert Hash, testload.third_grade_proficiency
+    assert Hash, testload.fourth_grade_proficiency
+    assert Hash, testload.eighth_grade_proficiency
   end
 end
