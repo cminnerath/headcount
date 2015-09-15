@@ -16,5 +16,8 @@ class StateWideTestingLoaderTest < Minitest::Test
     assert Hash, testload.third_grade_proficiency
     assert Hash, testload.fourth_grade_proficiency
     assert Hash, testload.eighth_grade_proficiency
+    assert Hash, testload.proficiency_by_race_math
+    assert Hash, testload.proficiency_by_race_writing
+    assert Hash, testload.proficiency_by_race_reading
   end
 end
