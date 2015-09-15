@@ -20,4 +20,16 @@ class StateWideTestingLoaderTest < Minitest::Test
     assert Hash, testload.proficiency_by_race_writing
     assert Hash, testload.proficiency_by_race_reading
   end
+
+  def test_it_can_find_csv_data_via_key
+    testload = StateWideTestingLoader.new
+    testload.load_all
+    final = []
+    testload.proficiency_by_race_writing.select do |hash|
+      if hash[:location] == "WOODLAND PARK RE-2"
+          final << hash
+      end
+    end
+    assert_equal "WOODLAND PARK RE-2", final.first.fetch(:location)
+  end
 end
