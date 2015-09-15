@@ -1,7 +1,7 @@
 require 'csv'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative "../lib/statewide_testing_loader"
+require_relative '../lib/statewide_testing_loader'
 
 class StateWideTestingLoaderTest < Minitest::Test
   def test_it_can_read_a_csv
