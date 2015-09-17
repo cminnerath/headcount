@@ -55,4 +55,18 @@ class StateWideTesting
        return "Error: Grade Not Found"
      end
    end
+
+   def proficient_for_subject_in_year(subject, year)
+     if subject == :reading || :math || :reading
+       three = proficient_by_grade(3)
+       eight = proficient_by_grade(8)
+       third = three.fetch(year)
+       eighth = eight.fetch(year)
+       x = eighth.fetch(subject)
+       y = third.fetch(subject)
+       (x + y) / 2
+     else
+     "UnknownDataError"
+   end
+  end
 end

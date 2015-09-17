@@ -60,4 +60,10 @@ class StateWideTestingTest < Minitest::Test
     assert_equal 0.67647, testload.proficient_by_grade_in_year(:writing, 8, 2011)
     assert_equal "Error: Grade Not Found", testload.proficient_by_grade_in_year(:math, 156, 2012)
   end
+
+  def test_it_can_in_can_find_proficiency_for_subject_for_all_grades
+    testload = StateWideTesting.new('WOODLAND PARK RE-2')
+    assert_equal 0.8165, testload.proficient_for_subject_in_year(:reading, 2008)
+    assert_equal 0.670195, testload.proficient_for_subject_in_year(:math, 2012)
+  end
 end
