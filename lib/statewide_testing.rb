@@ -37,7 +37,22 @@ class StateWideTesting
          @output[k.to_i] = scores[0].merge(scores[1]).merge(scores[2])
        end
      else
-         @output =  "Error: Grade Not Found"
+       @output =  "Error: Grade Not Found"
+     end
+     @output
+   end
+
+   def proficient_by_grade_in_year(subject, grade, year)
+     if grade == 3
+       hash = proficient_by_grade(grade)
+       value_year = hash.fetch(year)
+       value_year.fetch(subject)
+     elsif grade == 8
+       hash = proficient_by_grade(grade)
+       value_year = hash.fetch(year)
+       value_year.fetch(subject)
+     else
+       return "Error: Grade Not Found"
      end
    end
 end

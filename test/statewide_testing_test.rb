@@ -19,7 +19,7 @@ class StateWideTestingTest < Minitest::Test
     assert_equal 'AKRON R-1', testvar.first[:location]
     assert_equal 'AKRON R-1', testvar.last[:location]
   end
-  
+
   def setup
   @third_grade_results =  {2008=>{:math=>0.798, :reading=>0.838, :writing=>0.556},
                            2009=>{:math=>0.769, :reading=>0.799, :writing=>0.616},
@@ -50,5 +50,14 @@ class StateWideTestingTest < Minitest::Test
     assert_equal "Error: Grade Not Found", testload.output
     testload.proficient_by_grade
     assert_equal "Error: Grade Not Found", testload.output
+  end
+
+  def test_it_can_find_proficiency_in_a_subject_by_grade
+    testload = StateWideTesting.new('WOODLAND PARK RE-2')
+    assert_equal 0.838, testload.proficient_by_grade_in_year(:reading, 3, 2008)
+    assert_equal 0.818, testload.proficient_by_grade_in_year(:math, 3, 2012)
+    assert_equal 0.52239, testload.proficient_by_grade_in_year(:math, 8, 2012)
+    assert_equal 0.67647, testload.proficient_by_grade_in_year(:writing, 8, 2011)
+    assert_equal "Error: Grade Not Found", testload.proficient_by_grade_in_year(:math, 156, 2012)
   end
 end
